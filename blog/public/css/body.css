@@ -1,0 +1,206 @@
+.body{
+    width: 1200px;  
+    margin: 0 auto;
+}
+.body-b{
+    width: 1000px;
+    margin: 0 auto;
+    background: #fff;
+}
+.bodyleft{
+    float: left;
+    width: 680px;
+    background: #fff;
+    margin-top: 50px;
+    margin-left: 10px;
+    
+}
+.bodyright{
+    float: left;
+    width: 258px;
+    background: #fff;  
+    margin-top: 50px;
+    margin-left: 35px;
+}
+.comm{
+    height: 32px;
+    width: 258px;
+    border: 1px #ccc solid;
+    line-height: 32px;
+    text-indent: 5px;
+    background: #f0f0f0
+}
+.comm span{
+    display: inline-block;
+    background: #f0f0f0;
+}
+.bodyright .top{
+    display: none;
+}
+.mymessges{  
+    box-sizing: border-box;
+    width: 258px;
+    /* height: 160px; */
+    padding-left: 10px;
+    background: #fff;
+    margin-top: 20px;
+}
+.mymessges p{
+    height: 25px;
+    font-size: 13px;
+    line-height: 25px;
+}
+.mymessges p:last-of-type{
+    margin-bottom: 15px;
+}
+.mymessges span{
+    display: inline-block;
+    height: 30px;
+    background: #fff;
+}
+.mymessges span:hover{
+    color: red;
+    text-decoration: underline;
+}
+.date{
+    width: 256px;
+    height: 210px;
+    background: white;  
+}
+.data num{
+    width: 258px;
+    height: 220px;
+    background: #fff;
+}
+.date .cld-w{
+    width: 258px;
+    height: 210px;
+    background: white;
+}
+.date .cld-w tr{   
+    height: 30px;
+    background: rgba(0, 150, 136, 0.5);
+}
+.date .cld-w tr th{
+    text-align: center;
+    background: rgba(0, 150, 136, 0.5);
+    cursor: pointer;
+}
+.date thead .cld-hd{
+    background: rgba(0, 150, 136, 0.5);
+}
+.date thead .cld-hd span{
+    display: block;
+    float: left;
+    width: 28px;
+    height: 30px;
+    line-height: 30px;
+    background: rgba(0, 150, 136, 0.5);
+    font-style: none;
+}
+.date thead .cld-hd #showDate{ 
+    width: 200px;
+}
+.date tbody th,td{  
+    width: 30px;
+    font-size: 13px;
+    text-align: center;
+    line-height: 20px;
+    height: 20px;
+    background: white;
+}
+.datebtm .num{
+    text-align: center;
+    height: 210px;
+    background: white;
+}
+.datebtm .num span{
+    display: inline-block;
+    width: 35px;
+    text-align: center;
+    line-height: 25px;
+    height: 25px;
+    font-size: 13px;
+    background: white;
+    
+}
+.cld-old{
+    color: #ccc;
+}
+.cld-cur{
+    
+    color: red;
+}
+.datetop{
+    width: 258px;
+    height: 30px;
+    background: #fff;
+}
+.datetop span{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background: #fff;
+    cursor: pointer;
+}
+.datetop span:nth-of-type(2){   
+    width: 188px;
+}
+.datebtm{
+    width: 258px;
+    height: 210px;
+    background: greenyellow;
+}
+.seach{
+    margin-top: 10px;
+}
+.sea{
+    width: 258px;
+    height: 100px;
+    background: #333;  
+}
+.seatop{
+    width: 258px;
+    height: 50px;
+    line-height: 50px;
+    background: #fff;
+}
+.seabtm{
+    width: 258px;
+    height: 50px;
+    background: #fff;
+}
+.sea input{
+    background: #fff;
+    width: 150px;
+}
+.sea button{
+    width: 70px;
+    margin-left: 10px;
+    text-align: center;
+    background: #f0f0f0;
+    border: none;
+    border: 1px #ccc solid;
+}
+.layui-form{
+    background: #fff;
+    margin-top: 10px;
+}
+.layui-form-item{
+    background: #fff;
+}
+.layui-form .layui-form-label{
+    width: 50px;
+    background: #fff;
+    text-align: left;
+    padding-left: 2px;
+}
+.layui-form-item .layui-input-block{
+    margin-left: 70px;
+}
+.layui-input-block.clearmargin{
+    margin-left: 0px;
+    background: #fff;
+}

@@ -1,0 +1,11 @@
+.foot{
+    width: 1200px;
+    height: 50px;
+    margin: 0 auto
+}
+.foot-t{
+    width: 1000px;
+    height: 50px;
+    background: #333;
+    margin: 0 auto
+}
