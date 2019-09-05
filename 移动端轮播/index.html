@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>移动端banner</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .wrap {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+
+        }
+
+        .bg {
+            width: 100vw;
+            height: 100vh;
+            background-image: url(./img/1.png);
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            filter: blur(10px)
+        }
+
+        .wrap .cont {
+            overflow: hidden;
+            position: absolute;
+            top: 50%;
+            margin-top: -25vh;
+            height: 50vh;
+            width: 100vw;
+
+        }
+
+        .wrap .cont>ul {
+            list-style: none;
+            width: 600vw;
+            height: 50vh;
+        }
+
+        .wrap .cont>ul li {
+            float: left;
+            text-align: center;
+            width: 100vw;
+            height: 60vh;
+        }
+
+        .wrap .cont>ul li>img {
+            width: 70%;
+            height: 70%;
+            border-radius: 3vw;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap ">
+        <div class="bg"></div>
+        <div class="cont">
+            <ul>
+                <li><img src="./img/1.png" alt=""></li>
+                <li><img src="./img/2.png" alt=""></li>
+                <li><img src="./img/3.png" alt=""></li>
+                <li><img src="./img/4.png" alt=""></li>
+                <li><img src="./img/5.png" alt=""></li>
+                <li><img src="./img/6.png" alt=""></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        let cont = document.querySelector(".cont");
+        let oBg = document.querySelector(".bg");
+        let wrap = document.querySelector(".wrap");
+        let oUl = document.querySelector(".cont>ul");
+        let oLi = document.querySelectorAll(".wrap ul li");
+        let oLiLen = oLi.length, liWidth = oLi[0].offsetWidth;
+        let startX, intX=0, i = 0;
+        oUl.style.width = oLi.length + "00vw";
+        function touch(ev = window.event) {
+            switch (ev.type) {
+                case "touchstart":
+                    startX = Number(ev.touches[0].clientX);
+                    oUl.style.transition = ``;
+                    break;
+                case "touchmove":
+                    let X = Number(ev.touches[0].clientX);
+                    intX = X - startX
+                    oUl.style.transform = "translateX(" + (i + intX) + "px)";
+                    break;
+                case "touchend":
+                    i = i + Number(intX);
+                    i = Math.min(0, i);
+                    i = Math.max(-(oLiLen - 1) * liWidth, i);
+                    num = -Math.round((-i-10) / (liWidth));
+                    oUl.style.transition = `0.5s`;
+                    oUl.style.transform = "translateX(" + (num * liWidth) + "px)";
+                    i = num * liWidth;
+                    intX=0;
+                    oBg.style.backgroundImage = `url(./img/${-num + 1}.png`;
+                    break;
+            }
+        }
+        cont.addEventListener("touchstart", touch);
+        cont.addEventListener("touchmove", touch);
+        cont.addEventListener("touchend", touch)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        body{
+            background:  #67929A;
+        }
+        .wrap {
+            position: relative;
+            width: 300px;
+            height: 455px;
+            margin: 0 auto;
+
+        }
+        .numtop{
+            width: 300px;
+            height: 40px;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0.5;
+            line-height: 40px;
+            font-size: 20px;
+            font-weight: blod;
+            text-align: center;
+            
+        }
+        .pic {
+            /* overflow: hidden; */
+            position: absolute;
+            left: 0px;
+            top: 40px;
+            width: 300px;
+            height: 415px;           
+            transition: 0.5s;
+        }
+        p{
+            height: 40px;
+            background: rgba(0, 0, 0, 0.5);
+            margin-top: 375px;
+            line-height: 40px;
+            font-size: 20px;
+            text-align: center;
+        }
+        .wrap:hover p{
+            font-size: 22px;
+            color: red;
+        }
+        .wrap:hover .pic{
+            box-shadow: 0 0 20px #333;
+            top: 35px;
+        }
+        .btn {
+            width: 300px;
+            height: 50px;
+            margin: 0 auto;
+
+        }
+
+        .combtn {
+            position: absolute;
+            top: 50%;
+            z-index: 4;
+            float: left;
+            width: 80px;
+            height: 40px;
+            margin-top: -20px;
+            background: #333;
+            opacity: 0.5;
+            line-height: 40px;
+            text-align: center;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .btnnext {
+            right: 0px;
+        }
+
+        .btn .combtm {
+            float: left;
+            width: 80px;
+            height: 40px;
+            margin-top: 10px;
+            background: #333;
+            line-height: 40px;
+            text-align: center;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .btn .btnbotm {
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="numtop"><span class="num">1</span>/5</div>
+        <div class="pic" style="background-image:url(img/1.jpg);">
+            <p>公益猫盒</p>
+        </div>
+        <div class="combtn btnadd">上一张</div>
+        <div class="combtn btnnext">下一张</div>
+    </div>
+    <div class="btn">
+        <div class="combtm btntop">正常模式</div>
+        <div class="combtm btnbotm">循环模式</div>
+    </div>
+    <script>
+        let wrap = document.querySelector(".wrap"),
+            img = document.querySelector(".pic"),
+            btnAdd = document.querySelector(".btnadd"),
+            btnNext = document.querySelector(".btnnext"),
+            btnTop = document.querySelector(".btntop"),
+            btnBotm = document.querySelector(".btnbotm"),
+            body=document.querySelector("body"),
+            arr=["#67929A","#E7EAED","#FD5862","#FFEE98","pink"],
+            arrCon=["公益猫盒","看式神怎么安慰你吧","结缘物化","集绘千卷","百汇罗衣"],
+            num=document.querySelector(".num"),
+            numTop=document.querySelector(".numtop"),
+            p=document.querySelector("p"),
+            i = 1;
+        btnBotm.onclick = function () {
+            console.log(i);
+            btnBotm.style.background="red";
+            btnTop.style.background="#333";
+            btnNext.onclick = function () {
+                if(i<=6){
+                    if(i==6){
+                        i=1
+                    }
+                    if(i==5){
+                        i=0
+                    }
+                    
+                    i=i+1;
+                    num.innerText=i;
+                    img.style.backgroundImage = "url(img/" + i + ".jpg)";
+                    body.style.background=arr[i-1];
+                    p.innerText=arrCon[i-1];
+                    
+                }
+                if (i == 5) {
+                    i = 0                   
+                }
+            }
+            btnAdd.onclick = function () {
+                
+                if(i>=0){
+                    if(i==0){
+                        i=5
+                    }
+                    if(i==1){
+                        i=6
+                    }
+                    i=i-1;
+                    num.innerText=i;
+                    img.style.backgroundImage = "url(img/" + i + ".jpg)";
+                    body.style.background=arr[i-1];
+                    p.innerText=arrCon[i-1];
+                }
+                if (i == 1) {
+                    i = 6
+                }
+            }
+        }
+        btnTop.onclick = function () {
+            btnTop.style.background="red";
+            btnBotm.style.background="#333";
+            btnNext.onclick = function () {
+                if (i < 5) {
+                    i = i + 1;
+                    num.innerText=i;
+                    img.style.backgroundImage = "url(img/" + i + ".jpg)";
+                    body.style.background=arr[i-1];
+                    p.innerText=arrCon[i-1];
+                }
+                
+            }
+            btnAdd.onclick = function () {
+                if (i > 1) {
+                    i = i - 1;
+                    num.innerText=i;
+                    img.style.backgroundImage = "url(img/" + i + ".jpg)";
+                    body.style.background=arr[i-1];
+                    p.innerText=arrCon[i-1];
+                }               
+            }
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>

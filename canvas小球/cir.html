@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrap {
+            width: 100%;
+            height: 100%;
+        }
+
+        .cavs {
+            width: 100%;
+            height: 100%;
+            background: skyblue;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <canvas class="cavs"></canvas>
+    </div>
+    <script>
+        let cavs = document.querySelector(".cavs");
+        cavs.width = window.innerWidth;
+        cavs.height = window.innerHeight;
+        let w = cavs.width;
+        let h = cavs.height;
+        let circles = new Array;
+        let time = 0;
+        let num = 521;//小圆数量
+        var canCon = cavs.getContext("2d");
+        function Circle() {
+            this.numw = parseInt(Math.random() * w);//小圆x轴坐标
+            this.numh = parseInt(Math.random() * h);//小圆y轴坐标
+            this.cR = parseInt(Math.random() * (8 - 2) + 2);//小圆半径
+            this.r = parseInt(Math.random() * (256 - 0) + 0);//rgb随机色r
+            this.g = parseInt(Math.random() * (256 - 0) + 0);//rgb随机色b
+            this.b = parseInt(Math.random() * (256 - 0) + 0);//rgb随机色g
+            this.a = Math.random().toFixed(1);
+            this.wV = parseInt(Math.random() * (5 - (-5)) + (-5));//x轴速度
+            this.hV = parseInt(Math.random() * (5 - (-5)) + (-5));//y轴速度
+            this.paint = function () {//画圆
+                canCon.beginPath();
+                canCon.fillStyle = "rgba(" + this.r + "," + this.g + "," + this.b + ")";
+                canCon.arc(this.numw, this.numh, this.cR, 0, Math.PI * 2);
+                canCon.fill();
+            }
+            this.step = function () {//小圆移动
+                this.numh += this.hV;
+                this.numw += this.wV;
+                if ((this.numw - this.cR) <= 0) {//碰到左边电脑框框
+                    this.wV = (-this.wV);
+                }
+                if ((this.numw + this.cR) >= w) {//碰到右边电脑框框
+                    this.wV = (-this.wV);
+                }
+                if ((this.numh - this.cR) <= 0) {//碰到上边电脑框框
+                    this.hV = (-this.hV);
+                }
+                if ((this.numh + this.cR) >= h) {//碰到下边电脑框框
+                    this.hV = (-this.hV);
+                }
+                for (let i = 0; i < circles.length; i++) {
+                    let cir = circles[i]
+                    if (this != cir) {
+                        let x_v = this.numw - cir.numw;
+                        let y_v = this.numh - cir.numh;
+                        let xv = Math.abs(this.wV) - Math.abs(cir.wV);
+                        let yv = Math.abs(this.hV) - Math.abs(cir.hV);
+                        let distance = Math.sqrt(x_v * x_v + y_v * y_v)
+                        if (distance <= this.cR + cir.cR) {
+                            if (Math.sqrt(this.wV * this.wV + this.hV * this.hV) > Math.sqrt(cir.wV * cir.wV + cir.hV * cir.hV)) {
+                                this.hV = -yv;
+                                this.wV = -xv;
+
+                            }
+                            if (Math.sqrt(this.wV * this.wV + this.hV * this.hV) < Math.sqrt(cir.wV * cir.wV + cir.hV * cir.hV)) {
+                                cir.hV = yv;
+                                cir.wV = xv;
+                            }
+                            if (Math.sqrt(this.wV * this.wV + this.hV * this.hV) <= Math.sqrt(cir.wV * cir.wV + cir.hV * cir.hV)) {
+                                cir.numh += cir.hV;
+                                cir.numw += cir.wV;
+                                this.numh += this.hV;
+                                this.numw += this.wV;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        function createCircles() {
+            let circle = new Circle;
+            if (circles.length < num) {
+                circles[circles.length] = circle;//把实例添加到数组中
+            }
+        }
+        function paintCircles() {
+            for (let i = 0; i < circles.length; i++) {
+                circles[i].paint();
+            }
+        }
+        function stepCircles() {
+            for (let i = 0; i < circles.length; i++) {
+                circles[i].step()
+            }
+        }
+        setInterval(function () {
+            createCircles();
+            canCon.clearRect(0, 0, w, h);
+            paintCircles();
+            stepCircles();
+
+        }, 30)
+    </script>
+</body>
+
+</html>

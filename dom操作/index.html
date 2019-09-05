@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        body {
+            padding: 0px;
+            margin: 0px;
+            border: red;
+            background: linear-gradient(skyblue, rgb(248, 89, 89))
+        }
+
+        .wrap {
+            width: 1000px;
+            height: 650px;
+            margin: auto;
+            margin-top: 100px;
+            background: white;
+            filter: opacity(0.6);
+        }
+
+        .wrap>div {
+            float: left;
+            width: 50%;
+            height: 100%;
+        }
+
+        .left {
+            background: white;
+        }
+
+        .right {
+            background: #000;
+        }
+
+        .nav {
+            width: 100%;
+            height: 100px;
+            line-height: 120px;
+            text-indent: 10px;
+            font-size: 18px;
+            color: red;
+        }
+
+        .nav span {
+            display: inline-block;
+            color: #000;
+            cursor: pointer;
+        }
+
+        .nav span:hover {
+            text-decoration: underline;
+            color: red;
+        }
+
+        .cont {
+            width: 100%;
+            height: 500px;
+        }
+
+        .cont .cont-desri {
+            display: inline-block;
+            width: 120px;
+            height: 40px;
+            margin-left: 10px;
+            background: white;
+            border: 1px #333 solid;
+        }
+
+        .cont-desri a {
+            float: left;
+            display: block;
+            margin-top: 0px;
+            width: 80px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            background: white;
+            font-size: 18px;
+        }
+
+        .cont-desri span {
+            float: left;
+            position: relative;
+            display: inline-block;
+            margin: 0;
+            width: 34px;
+            height: 40px;
+            background: white;
+            border-left: 1px #333 solid;
+        }
+
+        .trs span {
+            position: absolute;
+            top: 20px;
+            left: 5px;
+            display: block;
+            border-radius: 50%;
+            width: 25px;
+            height: 3px;
+            background: #000;
+            transform: rotate(40deg)
+        }
+
+        .cont-right {
+            margin-left: 10px;
+            margin-top: 10px;
+        }
+
+        .cont-right a {
+            margin-left: 10px;
+            margin-top: 10px;
+        }
+
+        .trs span:last-of-type {
+            width: 30px;
+            height: 2px;
+            transform: rotate(-45deg)
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="left">
+            <div class="nav">
+                热门目的地：<span>马来西亚</span>
+                <span>泰国</span>
+                <span>三亚</span>
+                <span>新西兰</span>
+                <span>云南</span>
+            </div>
+            <div class="cont">
+
+            </div>
+        </div>
+        <div class="right"></div>
+    </div>
+    <script>
+        let nav = document.querySelectorAll(".nav span");
+        let cont = document.querySelector(".cont");
+        let right = document.querySelector(".right")
+        nav.forEach((element, index) => {
+            element.dataset.index = 1
+            element.addEventListener("click", function () {
+                if (element.dataset.index === "1") {
+                    cont.innerHTML += `<span class="cont-desri">
+                    <a href="javascript:;">${element.innerHTML}</a>
+                    <span class="trs" data-index=${index}>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </span>`;
+                    right.innerHTML += `<span class="cont-desri cont-right">
+                    <a href="javascript:;">${element.innerHTML}</a>                  
+                </span>`;
+                }
+                if (element.dataset.index > 1) {
+                    alert("您已经选过啦")
+                }
+                element.dataset.index = 2
+            })
+        });
+
+        cont.addEventListener("mousedown", function (ev = window.event) {
+            var trs = document.querySelectorAll(".trs")
+            var contR = document.querySelectorAll(".cont-right")
+            if (ev.target.className === "trs" || ev.target.className === "") {
+                trs.forEach((element, i) => {
+                    element.addEventListener("mouseup", function () {
+                        element.parentNode.remove();
+                        contR[i].remove();
+                        nav[element.dataset.index].dataset.index = 1
+                    })
+                });
+            }
+        })
+    </script>
+</body>
+
+</html>

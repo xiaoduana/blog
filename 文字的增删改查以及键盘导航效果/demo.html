@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .wrap {
+        width: 600px;
+        height: 500px;
+        border: 1px #333 solid;
+        margin: 50px auto;
+    }
+
+    .sech {
+        width: 5980px;
+        height: 80px;
+    }
+
+    .input {
+        width: 180px;
+        margin: 30px 15px;
+    }
+
+    .text {
+        width: 600px;
+        height: 478px;
+
+    }
+
+    .reset {
+        margin-left: 15px;
+    }
+
+    span {
+        color: red;
+    }
+
+    p {
+        line-height: 30px;
+        text-indent: 2em;
+        padding-top: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+</style>
+
+<body>
+    <div class="wrap">
+        <div class="sech">
+            <input type="text" class="input sec">
+            <input type="button" value="搜索" class="btn">
+            <input type="text" class="input change">
+            <input type="button" value="替换" class="btnbtm">
+            <input type="button" value="重置" class="reset">
+        </div>
+        <div class="text">
+            <p>张家界，原名“大庸市”，湖南省地级市。辖2个市辖区（永定区、武陵源区）、2个县（慈利县、桑植县）。位于湖南西北部，澧水中上游，属武陵山区腹地。 [1]
+                张家界因旅游建市，是中国最重要的旅游城市之一，是湘鄂渝黔革命根据地的发源地和中心区域。</p>
+            <p>1982年9月，张家界国家森林公园成为中国第一个国家森林公园。</p>
+            <p>1988年8月，张家界武陵源风景名胜区被列入国家重点风景名胜区；1992年，由张家界国家森林公园等三大景区构成的武陵源风景名胜区被联合国教科文组织列入《世界自然遗产名录》；2004年2月，被列入全球首批《世界地质公园》；2007年，被列入中国首批国家5A级旅游景区。
+                [2] 2017年，被授予“国家森林城市”荣誉称号。</p>
+        </div>
+    </div>
+    <script>
+        let sec = document.querySelector(".sec"),
+            btn = document.querySelector(".btn"),
+            change = document.querySelector(".change"),
+            btnBtm = document.querySelector(".btnbtm"),
+            reSet = document.querySelector(".reset"),
+            text = document.querySelector(".text"),
+            span=document.querySelector("span"),
+            oP = document.querySelectorAll("p"),
+            strPTop=oP[0].innerText,
+            strPcen=oP[1].innerText,
+            strPbtm=oP[2].innerText;
+        reSet.addEventListener("click",function(){
+            oP[0].innerText=strPTop;
+            oP[1].innerText=strPcen;
+            oP[2].innerText=strPbtm;
+        })  
+        
+        btn.addEventListener("click",function () {
+                var str0=oP[0].innerText.split(sec.value);
+                var aStr0=str0.join("<span>"+sec.value+"</span>");
+                oP[0].innerHTML=aStr0;
+
+                var str1=oP[1].innerText.split(sec.value);
+                var aStr1=str1.join("<span>"+sec.value+"</span>");
+                oP[1].innerHTML=aStr1;
+
+                var str2=oP[2].innerText.split(sec.value);
+                var aStr2=str2.join("<span>"+(sec.value)+"</span>");
+                oP[2].innerHTML=aStr2;
+        })
+        
+        btnBtm.addEventListener("click",function (){                     
+                var str0=oP[0].innerText.split(sec.value);
+                var aStr0=str0.join(change.value);
+                oP[0].innerText=aStr0;
+
+                var str1=oP[1].innerText.split(sec.value);
+                var aStr1=str1.join(change.value);
+                oP[1].innerText=aStr1;
+
+                var str2=oP[2].innerText.split(sec.value);
+                var aStr2=str2.join(change.value);
+                oP[2].innerText=aStr2;
+            });
+
+        // function chgeSec() {
+        //     var str=new Array,
+        //         aStr=new Array;
+                
+        //         for (let i = 0; i <= oP.length; i++) {
+        //             str[i]=oP[i].innerText.split(sec.value);
+        //             aStr[i]=str[i].join("<span>"+sec.value+"</span>");
+        //             oP[i].innerHTML=aStr[i];
+                    
+        //         }
+       
+
+    </script>
+</body>
+
+</html>

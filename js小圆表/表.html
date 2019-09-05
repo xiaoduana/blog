@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .circle {
+            position: absolute;
+            top: 0px;
+            left: 50%;
+            margin-left: -10px;
+            width: 5px;
+            height: 5px;
+            background: #00c806;
+            font-size: 5px;
+            border-radius: 50%;
+            transform-origin: top center;
+        }
+        .list{
+            margin: 100px auto;
+            background: #FD8B93;
+            border: 6px skyblue solid;
+            box-shadow: 0px 0px 30px #333 ;
+        }
+        .rata,.list {
+            position: relative;
+            width: 400px;
+            height: 400px;           
+            background: url(1.png);
+            background-size: 100%;
+            border-radius: 50%;
+            transform-style: preserve-3d;
+            transform:rotateX(0deg) rotateY(0deg) ;
+            perspective: 200px;
+            
+        }
+        .rata{
+            position: absolute;
+            top:0;
+            left: 0;
+            border: 1px #777 solid;
+            transform:rotateX(0deg) rotateY(0deg) ;
+            box-shadow: 0px 0px 100px skyblue inset;
+        }
+        .btn {
+            position: absolute;
+            left: 800px;
+            top: 550px;
+        }
+        .com {
+            z-index: 3;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -5px;
+            margin-top: -50px;
+            width: 3px;
+            height: 130px;
+            margin: 0 auto;
+            background:  #FD8B93;
+            border: 1px #00c806 solid;
+            transform-origin: top center;
+            transform: rotate(180deg);
+            
+        }
+
+        .com.hour{
+            z-index: 3;
+            height: 50px;
+            width: 6px;
+            background: yellow;
+            transform: rotate(240deg);
+        }
+        .com.sec{
+            z-index: 4;
+            height: 160px;
+            width: 2px;
+            background: orangered;
+            transform: rotate(230deg);
+        }
+
+        .sec::before {
+            position: absolute;
+            left: -7px;
+            top: -8px;
+            content: "";
+            height: 15px;
+            width: 15px;
+            border-radius: 50%;
+            background: skyblue;
+            box-shadow: 0 0 7px blue inset;
+        }
+        .wrap{
+            position: absolute;
+            top: 75%;
+            left: 50%;
+            margin-left: -45px;
+            width: 90px;
+            height: 20px;           
+            box-shadow: 0 0 5px skyblue inset;
+        }
+        .con{
+            float: left;
+            width: 30px;
+            height: 20px;
+            font-size: 16px;
+            line-height: 20px;
+            color: black;
+            text-align: center;
+            
+        }
+    </style>
+</head>
+
+<body>   
+    <div class="list">
+        <div class="com hour" style="transform: rotate(180deg);"></div>
+        <div class="com minu" style="transform: rotate(180deg);"></div>
+        <div class="com sec"  style="transform: rotate(180deg);"></div>
+        <div class="rata">
+        </div>
+        <div class="wrap">
+                <div class="con"></div>
+                <div class="con"></div>
+                <div class="con"></div>
+        </div>
+    </div>
+    
+    
+    <script>
+        let btn = document.querySelectorAll("button"),
+            rata = document.querySelector(".rata"),
+            aHour = document.querySelector(".com.hour"),
+            aSec = document.querySelector(".sec"),
+            aMinu=document.querySelector(".minu"),
+            con=document.querySelectorAll(".con"),
+            r = 195,
+            X = 200,
+            Y = 200,
+            a=1;
+            num = -96,
+            aNum = 180;
+        setInterval(function () {
+            a++
+            let time=new Date();
+            let time3=String(time);
+            let hour=time3.slice(16,18);
+            let minu=time3.slice(19,21);
+            let sec=time3.slice(22,24);
+            aSec.style.transform = "rotate(" + (180+sec*6) + "deg)";
+            aMinu.style.transform = "rotate(" + (180+(minu*6))+ "deg)";
+            aHour.style.transform = "rotate(" +(180+((hour-12)*5*6)) + "deg)";           
+        }, 1000)
+        setInterval(function () {
+            let time=new Date();
+            let time3=String(time);
+            let hour=time3.slice(16,18);
+            let minu=time3.slice(19,21);
+            let sec=time3.slice(22,24)
+            con[0].innerText=hour+":";
+            con[1].innerText=minu+":";
+            con[2].innerText=sec;
+        },1000)
+        for (let i = 0; i < 60; i++) {
+            rata.innerHTML+='<div class="circle"></div>';
+            let oCir = document.querySelectorAll(".circle");
+            num += 6;
+            let a = Math.sin(num * Math.PI / 180) * r;
+            let b = Math.cos(num * Math.PI / 180) * r;
+            oCir[i].style.left = X + 7.5 + b + 'px';
+            oCir[i].style.top = Y - 2.5 + a + 'px';
+        }
+        let oCir = document.querySelectorAll(".circle");
+        for (let j = 0; j < 60; j += 5) {
+            oCir[j].style.height = '10px';
+            oCir[j].style.borderRadius = '0px';
+            oCir[j].style.background = 'red';
+            oCir[j].style.marginTop = "2px";
+            oCir[j].style.transform = "rotate(" + j * 6 + "deg)";
+        }
+
+    </script>
+</body>
+
+</html>

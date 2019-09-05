@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    ul{
+        list-style: none;
+    }
+    li{
+        float: left;
+        padding-top: 10px;
+    }
+    a{
+        font-size: 12px;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    #content{
+        width: 1175px;
+        height: auto;
+        
+        margin: auto;
+    }
+    #wrap{
+        width: 1175px;
+        height: 130px;
+        background: #fcfcfc;
+        border: 1px #ccc solid;
+        margin: 20px auto;
+    }
+    .check{
+        width: 70px;
+        height: 119px;
+        
+    }
+    .check input{
+        margin-left: 25px;
+    }
+    .shop{
+        width: 120px;
+        height: 119px;
+        
+    }
+    .shop img{
+        border: 1px #ccc solid;
+    }
+    .caption{
+        width: 220px;
+        height: 119px;
+        font-size: 12px;
+        color: #666;
+    }
+    .cast{
+        width: 170px;
+        height: 119px;
+        margin-left: 40px;
+        margin-right: 40px;
+        font-size: 12px;
+        color: #bbb;  
+    }
+    .price{
+        width: 130px;
+        height: 119px;
+        
+        color: #666; 
+        
+    }
+    .f-price{
+        font-size: 13px;
+        color: #666;
+        text-decoration: line-through;
+    }
+    .t-price{
+        font-size: 14px;
+        font-weight: bold;
+        color: #333;
+        
+    }
+    .select{
+        width: 120px;
+        height: 119px;
+        
+    }
+    .s-wrap{
+        width: 80px;
+        height: 24px;
+        margin-left: -10px;
+    }
+    .less{
+        float: left;
+        width: 16px;
+        height: 22px;
+        border: 1px #ccc solid;
+        text-align: center;
+    }
+    .number{
+        float: left;
+        width: 40px;
+        height: 22px;
+        border: 1px #bbb solid;
+        text-align: center;
+    }
+    .add{
+        float: left;
+        width: 16px;
+        height: 22px;
+        border: 1px #ccc solid;
+        text-align: center;
+    }
+    .right p{
+        height: 25px;
+        font-size: 13px;
+
+    }
+    .right p:hover{
+        color: red;
+        text-decoration: underline;
+    }
+    .r-price p{
+        color: #ff4400;
+    }
+    #footer{
+        position: fixed;
+        bottom: 0px;
+        
+        width: 1177px;
+        height: 50px;
+        background: #eee;
+    }
+    #footer li{
+        float: left;
+        width: 80px;
+        line-height: 30px;
+        height: 50px;
+        text-align: center;
+    }
+    #footer li a{
+        line-height: 30px;
+        color: #333;
+    }
+    #footer li a:hover{
+        color: red;
+        text-decoration: underline;
+    }
+    #footer .pay{
+        float: left;
+        width: 250px;
+        text-indent: ;
+        line-height: 30px;
+    }
+    
+    #footer .pay.last{
+        width: 100px;
+        font-size: 18px;
+        line-height: 30px;
+        text-align: center;
+        color: #fff;
+        background: #ff4400;
+    }
+    #footer .pay.first{
+        width: 140px;
+        margin-left:287px; 
+        text-align: center;
+    }
+    #footer .pay.first .f-num{
+        font-size: 20px;
+        font-weight: bold;
+        color: #ff4400;
+    }
+    #footer .pay .f-num{
+        font-size: 20px;
+        font-weight: bold;
+        color: #ff4400;
+    }
+    #footer .pay .f-num.fcon{
+        display: inline-block;
+        width: 100px;
+        
+    }
+    </style>
+</head>
+<body>
+    
+    <div id="content">
+        <div id="wrap">
+            <ul>
+                <li class="check"><input type="checkbox"  ></li>
+                <li class="shop"><img src="https://img.alicdn.com/bao/uploaded/i4/101498809/O1CN01dx6p7L2EwZQwC2LVg_!!101498809.jpg_80x80.jpg" alt=""></li>
+                <li class="caption"><p>Nike Air Force1 Mid空军一号男女鞋AF1中高帮纯白板鞋315123-111</p></li>
+                <li class="cast"><p>颜色分类：男款/纯白中帮315123-111仓B</p>
+
+                    <p>鞋码：41[正品/支持鉴定]</p></li>
+                <li class="price"><p class="f-price">￥719.00</p><p class="t-price">￥669.00</p></li>
+                <li class="select">
+                    <div class="s-wrap">
+                        <div class="less"><a>-</a></div>
+                        <div class="number">1</div>
+                        <div class="add"><a>+</a></div>
+                    </div>
+                </li>
+                <li class="price r-price"><p class="t-price">￥<span class="money">669.00</span></p></li>
+                <li class="right">
+                    <p><a>移入收藏夹</a></p>
+                    <p><a>删除</a></p>
+                </li>
+            </ul>
+        </div>
+        <div id="wrap">
+                <ul>
+                    <li class="check"><input type="checkbox"></li>
+                    <li class="shop"><img src="https://img.alicdn.com/bao/uploaded/i2/651359430/TB2n17.k4uTBuNkHFNRXXc9qpXa_!!651359430-0-item_pic.jpg_80x80.jpg" alt=""></li>
+                    <li class="caption"><p>Nike Air Force1 Mid空军一号男女鞋AF1中高帮纯白板鞋315123-111</p></li>
+                    <li class="cast"><p>颜色分类：男款/纯白中帮315123-111仓B</p>
+        
+                        <p>鞋码：41[正品/支持鉴定]</p></li>
+                    <li class="price"><p class="f-price">￥38.9</p><p class="t-price">￥32.00</p></li>
+                    <li class="select">
+                        <div class="s-wrap">
+                            <div class="less"><a>-</a></div>
+                            <div class="number">1</div>
+                            <div class="add"><a>+</a></div>
+                        </div>
+                    </li>
+                    <li class="price r-price"><p class="t-price">￥<span class="money">32.00</span></p></li>
+                    <li class="right">
+                        <p><a>移入收藏夹</a></p>
+                        <p><a>删除</a></p>
+                    </li>
+                </ul>
+        </div>
+        <div id="wrap">
+                <ul>
+                    <li class="check"><input type="checkbox"></li>
+                    <li class="shop"><img src="https://img.alicdn.com/bao/uploaded/i3/712109075/O1CN01sdtN522GuOmJLoi3p_!!712109075.jpg_80x80.jpg" alt=""></li>
+                    <li class="caption"><p>Nike Air Force1 Mid空军一号男女鞋AF1中高帮纯白板鞋315123-111</p></li>
+                    <li class="cast"><p>颜色分类：男款/纯白中帮315123-111仓B</p>
+        
+                        <p>鞋码：41[正品/支持鉴定]</p></li>
+                    <li class="price"><p class="f-price">￥20.00</p><p class="t-price">￥15.00</p></li>
+                    <li class="select">
+                        <div class="s-wrap">
+                            <div class="less"><a>-</a></div>
+                            <div class="number">1</div>
+                            <div class="add"><a>+</a></div>
+                        </div>
+                    </li>
+                    <li class="price r-price"><p class="t-price">￥<span class="money">15.00</span></p></li>
+                    <li class="right">
+                        <p><a>移入收藏夹</a></p>
+                        <p><a>删除</a></p>
+                    </li>
+                </ul>
+        </div>
+        <div id="wrap">
+                <ul>
+                    <li class="check"><input type="checkbox"></li>
+                    <li class="shop"><img src="https://img.alicdn.com/bao/uploaded/i4/2270454114/O1CN01pyN2Se1gGFvuRWeMk_!!0-item_pic.jpg_80x80.jpg" alt=""></li>
+                    <li class="caption"><p>Nike Air Force1 Mid空军一号男女鞋AF1中高帮纯白板鞋315123-111</p></li>
+                    <li class="cast"><p>颜色分类：男款/纯白中帮315123-111仓B</p>
+        
+                        <p>鞋码：41[正品/支持鉴定]</p></li>
+                    <li class="price"><p class="f-price">￥148.00</p><p class="t-price">￥147.00</p></li>
+                    <li class="select">
+                        <div class="s-wrap">
+                            <div class="less"><a>-</a></div>
+                            <div class="number">1</div>
+                            <div class="add"><a>+</a></div>
+                        </div>
+                    </li>
+                    <li class="price r-price"><p class="t-price">￥<span class="money">147.00</span></p></li>
+                    <li class="right">
+                        <p><a>移入收藏夹</a></p>
+                        <p><a>删除</a></p>
+                    </li>
+                </ul>
+        </div>
+        <div id="wrap">
+                <ul>
+                    <li class="check"><input type="checkbox" ></li>
+                    <li class="shop"><img src="https://img.alicdn.com/bao/uploaded/i4/2618720546/O1CN01Ywp0er1Fu6k9GfTTf_!!2618720546.jpg_80x80.jpg" alt=""></li>
+                    <li class="caption"><p>Nike Air Force1 Mid空军一号男女鞋AF1中高帮纯白板鞋315123-111</p></li>
+                    <li class="cast"><p>颜色分类：男款/纯白中帮315123-111仓B</p>
+        
+                        <p>鞋码：41[正品/支持鉴定]</p></li>
+                    <li class="price"><p class="f-price">￥120.00</p><p class="t-price">￥100.21</p></li>
+                    <li class="select">
+                        <div class="s-wrap">
+                            <div class="less"><a>-</a></div>
+                            <div class="number">1</div>
+                            <div class="add"><a>+</a></div>
+                        </div>
+                    </li>
+                    <li class="price r-price"><p class="t-price">￥<span class="money">100.21</span></p></li>
+                    <li class="right">
+                        <p><a>移入收藏夹</a></p>
+                        <p><a>删除</a></p>
+                    </li>
+                </ul>
+        </div>
+        <div id="footer">
+            <ul>
+                <li><a href="javascript:;"><input type="checkbox" >全选</a></li>
+                <li><a href="javascript:;">删除</a></li>
+                <li><a href="javascript:;">清除失效宝贝</a></li>
+                <li><a href="javascript:;">移入收藏夹</a></li>
+                <li><a href="javascript:;">分享</a></li>
+            </ul>
+            <ul>
+                <li class="pay first">已选商品<span class="f-num shul"> 0 </span>件</li>
+                <li class="pay">合计（不含运费）：<span class="f-num fcon">  0.00  </span></li>
+                <li class="pay last">结算</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        var less = document.querySelectorAll(".less"),
+            wrap = document.querySelectorAll("#wrap"),
+            number = document.querySelectorAll(".number"),
+            money = document.querySelectorAll(".money"),
+            add = document.querySelectorAll(".add"),
+            cheakBox=document.querySelectorAll("input"),
+            fCon = document.querySelector(".fcon"),
+            shul = document.querySelector(".shul")
+            arr=[5],
+            arrPrice=[5];
+            cheakBox[5].onclick=function () {
+                
+                    for (let index = 0; index < 6; index++) {
+                        wrap[index].style.background = "pink";
+                        cheakBox[index].checked="checked"
+                    }
+                
+            }
+            for (let i = 0; i < 6; i++) {
+                var price=parseFloat(money[i].innerText);
+                arr[i]=price;
+                console.log(arr[i]);
+                function aAdd () {
+                    var num=parseInt(number[i].innerText);
+                    num=num+1;
+                    arrPrice[i]=(num*arr[i]).toFixed(2);
+                    shul.innerText=num;
+                    money[i].innerText=(num*arr[i]).toFixed(2);
+                    fCon.innerHTML = parseInt(arrPrice[i]).toFixed(2); 
+                    number[i].innerHTML = num;
+                    return arrPrice;
+                }
+                function aLess () {
+                    var num=parseInt(number[i].innerText);
+                    num=num-1;
+                    if (num===0) {
+                        num=num+1;
+                        alert("亲亲，至少留一件吧")
+                    }
+                    arrPrice[i]=(num*arr[i]).toFixed(2);
+                    shul.innerText=num;
+                    money[i].innerText=(num*arr[i]).toFixed(2);
+                    fCon.innerHTML = parseInt(arrPrice[i]).toFixed(2); 
+                    number[i].innerHTML = num;
+                }
+            add[i].onclick=aAdd;
+            less[i].onclick=aLess;               
+            }
+            
+    </script>
+</body>
+</html>

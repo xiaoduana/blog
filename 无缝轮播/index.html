@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+        }
+
+        .move{
+            width: 100px;
+            height: 100px;
+            background-color: rgb(153, 43, 43);
+            margin:100px auto;
+            transition: height 5s;
+        }
+
+        .move:hover{
+            height: 500px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="move"></div>
+
+    <script>
+        let oDIv=document.querySelector(".move");
+
+        function whichTransitionEvent(){
+            let t,
+                ele=document.createElement("div"),
+                transitionEvent={
+                    "transition":"transitionend",
+                    "OTransition":"oTransitionEnd",
+                    "MozTransition":"transitionend",
+                    "WebkitTransition":"webkitTransitionEnd"
+                };
+            for( t in transitionEvent){
+                if(ele.style[t]!==undefined){
+                    return transitionEvent[t]
+                }
+            }
+        }
+
+
+        oDIv.addEventListener(whichTransitionEvent(),function(){
+            oDIv.innerText="万章大帅比";
+        })
+
+
+        
+    
+    </script>
+</body>
+</html>

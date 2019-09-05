@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .circle{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 20px;
+            height: 20px;
+            background: #00c806;
+            border-radius: 50%;
+        }
+        .rata{
+            overflow: hidden;
+            position: relative;
+            left: 600px;
+            top: 100px;
+            width: 400px;
+            height: 400px;
+            border: 1px red solid;
+            border-radius: 50%;
+        }
+        .btn{
+            position: absolute;
+            left: 800px;
+            top: 550px;
+        }
+        
+    </style>
+</head>
+<body>
+    
+    <div class="circle"></div>
+    <div class="rata">
+    </div>
+    <div class="btn">
+        <button >进去</button>
+        <button >出来</button>
+    </div>
+    <script>
+        let oCir=document.querySelector(".circle"),
+            btn=document.querySelectorAll("button"),
+            radu=document.querySelectorAll(".radu")
+            r=211;
+            X=800,
+            Y=300,
+            num=0;
+        setInterval(function () {
+            num++;
+            let a=Math.sin(num*Math.PI/180)*r;
+            let b=Math.cos(num*Math.PI/180)*r;
+            oCir.style.left=X-10+b+'px';
+            oCir.style.top=Y-10+a+'px';      
+        },30)   
+                   
+            btn[0].onclick=function(){
+                r=190;
+            }    
+            btn[1].onclick=function(){
+                r=211;
+            }
+    </script>
+</body>
+</html>

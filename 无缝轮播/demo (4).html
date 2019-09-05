@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>无缝轮播图</title>
+    <style>
+        body,ul{
+            margin:0;
+        }
+        ul{
+            padding-left: 0;
+            list-style:none;
+        }
+        img{
+            display: block;
+        }
+        .banner{
+            position: relative;
+            width: 780px;
+            height: 380px;
+            margin: 100px auto;
+        }
+        .imgbox{
+            overflow: hidden;
+            width: 100%;
+            height:330px;
+        }
+        .imgbox ul{
+            width: 700%;
+            height: 100%;
+            transition: transform 0.3s;
+            transform: translateX(-780px);
+        }
+        .imgbox ul.on{
+            transition: transform 0s;
+        }
+        .imgbox ul>li{
+            float: left;
+            width: 780px;
+            height: 100%;
+        }
+        .tab{
+            width: 100%;
+            height: 50px;
+        }
+        .tab>ul{
+            width: 100%;
+            height: 100%;
+        }
+        .tab>ul>li{
+            float: left;
+            width: 20%;
+            height: 100%;
+            background-color: #000;
+            color: aliceblue;
+            text-align: center;
+            line-height: 50px;
+        }
+        .tab>ul>li.active{
+            background-color: rgba(100, 99, 85);
+            color:gold;
+        }
+        .arrow>div{
+            position: absolute;
+            top:50%;
+            width: 40px;
+            height: 60px;
+            background-color: rgb(10, 6, 6);
+            transform: translateY(-50%);
+            color:antiquewhite;
+            text-align: center;
+            line-height: 60px;
+        }
+        .arrow>div.left{
+            left:0;
+        }
+        .arrow>div.right{
+            right:0;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <div class="imgbox">
+            <ul>
+                <li><img src="images/1.jpg" alt=""></li>
+                <li><img src="images/2.jpg" alt=""></li>
+                <li><img src="images/3.jpg" alt=""></li>
+                <li><img src="images/4.jpg" alt=""></li>
+                <li><img src="images/5.jpg" alt=""></li>
+            </ul>
+        </div>
+        <div class="tab">
+            <ul>
+                <li class="active">开黑吗</li>
+                <li>我亚索贼溜</li>
+                <li>只要我E的够快</li>
+                <li>队友的问号</li>
+                <li>就跟不上我</li>
+            </ul>
+        </div>
+        <div class="arrow">
+            <div class="left"><</div>
+            <div class="right">></div>
+        </div>
+    </div>
+
+    <script>
+
+        let aImg=document.querySelectorAll(".imgbox>ul>li");
+        let oUl=document.querySelector(".imgbox>ul");
+        let aBtn=document.querySelectorAll(".arrow>div");
+        let aTab=document.querySelectorAll(".tab>ul>li");
+
+        function setDomNode(eleF,eleS){
+            eleF.insertBefore(eleS[eleS.length-1].cloneNode(true),eleS[0]);
+            eleF.appendChild(eleS[0].cloneNode(true));
+        }
+    
+        setDomNode(oUl,aImg);
+
+        let lastIndex = 0;// 上一次点击的索引
+
+        function changePage(idx){
+            oUl.classList.remove("on");//
+            oUl.style.transform=`translateX(${-(idx+1)*780}px)`;
+            if(idx<0){
+                setTimeout(function(){
+                    oUl.classList.add("on");//
+                    oUl.style.transform=`translateX(${-(aImg.length)*780}px)`;
+                },300);
+                idx=aImg.length-1;
+            }else if(idx>=aImg.length){
+                setTimeout(function(){
+                    oUl.classList.add("on");//
+                    oUl.style.transform=`translateX(${-780}px)`;
+                },300);
+                idx=0;
+            }
+            aTab[lastIndex].classList.remove("active");
+            aTab[idx].classList.add("active");
+            lastIndex=idx;
+        }
+
+        aBtn.forEach(function(ele,idx){
+            ele.onclick=function(){
+                changePage(idx?lastIndex+1:lastIndex-1);
+            }
+        })
+
+        aTab.forEach(function(ele,idx){
+            ele.onclick=function(){
+                changePage(idx);
+            }
+        })
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .vivw{
+            flex-wrap: wrap;
+            display: flex;
+        	width: 100vw;
+            justify-content: center;
+            align-items: center;
+        	margin: 0 auto;
+        }
+        ul,li{
+            list-style: none;
+        }
+        .pic{
+            width: 600px;
+            height: 200px;
+            background: url(https://www.baidu.com/img/dong_a38183314e67f1faa402cfb5bfc2f5a3.gif) no-repeat;
+            margin: 0 auto;
+            margin-top: 50px;
+            transform: scale(0.5)
+        }
+        .seach{
+            width: 550px;
+            height: 40px;
+            background: violet;
+            margin: 0 auto;
+            margin-top: 10px;
+        }
+        .sealeft{
+            float: left;
+            width: 410px;
+            height: 38px;
+            border: 1px #317EF3 solid;
+        }
+        .searig{
+            float: left;
+            width: 138px;
+            height: 40px;
+            background: #317EF3;
+            color: #fff;
+            line-height: 40px;
+            text-align: center;
+            font-size: 24px;
+        }
+        .wrap{
+            width: 530px;
+            height: 240px;
+            border-radius: 5px;
+            margin: 50px auto;
+            margin-bottom: 0px;
+        }
+        .wrap ul{
+            float: left;
+            width: 650px;
+            height: 60px;
+        }
+        .wrap li{
+        	position: relative;
+            float: left;
+            width: 40px;
+            height: 40px;
+            background: #eee;
+            text-align: center;
+            line-height: 40px;
+            margin-left: 10px;
+            border-radius: 5px;
+            color: #333;
+            border-bottom: 3px #333 solid;
+            box-shadow: 0px 0px 20px #ccc inset;
+            
+        }
+        ul:nth-of-type(1){
+            width: 650px;
+            margin-top: 5px;
+            margin-left: 12px;
+            
+        }
+        ul:nth-of-type(2) li{
+            margin-left: 12px;
+        }
+        ul:nth-of-type(3){
+            width: 550px;
+            margin-left: 40px;
+        }
+        ul:nth-of-type(4){
+            width: 430px;
+            margin-left: 90px;
+        }
+        li:hover .icon{
+        	display: block;
+        }
+        .icon{
+        	display: none;
+        	position: absolute;
+        	top: 0px;
+        	width: 40px;
+        	height: 30px;
+        	
+        }
+  		.icon img{
+  			position: absolute;
+  			top: 2px;
+  			left: 2px;
+  			transform: scale(0.9);
+  		}
+  		.icon .edit{
+  			left: 20px;
+  		}
+  		.iconbtm{
+  			position: absolute;
+  			left: -5px;
+  			top: 12px;
+  			opacity: 0.7;
+  			transform: scale(0.5);
+  		} 
+  		.iconbtm3{
+  			left: 2px;
+  			transform: scale(0.9);
+  		}
+  		.iconbtm4{
+  			left: 2px;
+  			transform: scale(0.8);
+  		}
+  		.iconbtm5{
+  			left: 2px;
+  			opacity: 0.6;
+  			transform: scale(0.9);
+  		}
+  		.iconbtm6{
+  			left: -20px;
+  			top: -5px;
+  			transform: scale(0.25);
+  		}
+    </style>
+</head>
+<body>
+	<div class="vivw">
+    <div class="pic"></div>
+    <div class="seach">
+        <input type="text" class="sealeft">
+        <div class="searig">百度一下</div>
+    </div>
+    <div class="wrap">
+
+        <ul>
+            <li>1
+                <div class="icon">  
+                   <a href="#"><img src="delete-icon.png"/></a>
+                   <a href="#"><img src="edit-icon.png"  class="edit"/></a>
+                </div>
+            </li>
+            <li>2
+            	<div class="icon">  
+                   <a href="#"><img src="delete-icon.png"/></a>
+                   <a href="#"><img src="edit-icon.png"  class="edit"/></a>
+                </div>
+            </li>
+            <li>3
+            	<div class="icon">  
+                   <a href="#"><img src="delete-icon.png"/></a>
+                   <a href="#"><img src="edit-icon.png"  class="edit"/></a>
+                </div>
+            </li>
+            <li>4
+            	<div class="icon">  
+                   <a href="#"><img src="delete-icon.png"/></a>
+                   <a href="#"><img src="edit-icon.png"  class="edit"/></a>
+                </div>
+            </li>
+            <li>5
+            	<div class="icon">  
+                   <a href="#"><img src="delete-icon.png"/></a>
+                   <a href="#"><img src="edit-icon.png"  class="edit"/></a>
+                </div>
+            </li>
+            <li>6
+            	<div class="icon">  
+                   <a href="#"><img src="delete-icon.png"/></a>
+                   <a href="#"><img src="edit-icon.png"  class="edit"/></a>
+                </div>
+            </li>
+            <li>7
+            	<div class="icon">  
+                   <a href="#"><img src="delete-icon.png"/></a>
+                   <a href="#"><img src="edit-icon.png"  class="edit"/></a>
+                </div>
+            </li>
+            <li>8
+            	<div class="icon">  
+                   <a href="#"><img src="delete-icon.png"/></a>
+                   <a href="#"><img src="edit-icon.png"  class="edit"/></a>
+                </div>
+            </li>
+            <li>9
+            	<div class="icon">  
+                   <a href="#"><img src="delete-icon.png"/></a>
+                   <a href="#"><img src="edit-icon.png"  class="edit"/></a>
+                </div>
+            </li>
+            <li>0
+            	<div class="icon">  
+                   <a href="#"><img src="delete-icon.png"/></a>
+                   <a href="#"><img src="edit-icon.png"  class="edit"/></a>
+                </div>
+            </li>
+        </ul>
+        <ul>
+            <li>q
+            	<div class="icon">  
+                   <a href="#"><img src="delete-icon.png"/></a>
+                   <a href="#"><img src="edit-icon.png"  class="edit"/></a>
+                </div>
+                <div class="iconbtm">
+                	<img src="http://www.qq.com/favicon.ico" />
+                </div>
+            </li>
+            <li>w
+            	<div class="icon">  
+                   <a href="#"><img src="delete-icon.png"/></a>
+                   <a href="#"><img src="edit-icon.png"  class="edit"/></a>
+                </div>
+                <div class="iconbtm">
+                	<img src="http://www.weibo.com/favicon.ico" />
+                </div>
+            </li>
+            <li>e
+            	<div class="icon">  
+                   <a href="#"><img src="delete-icon.png"/></a>
+                   <a href="#"><img src="edit-icon.png"  class="edit"/></a>
+                </div>
+            </li>
+            <li>r
+            	<div class="icon">  
+                   <a href="#"><img src="delete-icon.png"/></a>
+                   <a href="#"><img src="edit-icon.png"  class="edit"/></a>
+                </div>
+            </li>
+            <li>t
+            	<div class="icon">  
+                   <a href="#"><img src="delete-icon.png"/></a>
+                   <a href="#"><img src="edit-icon.png"  class="edit"/></a>
+                </div>
+                <div class="iconbtm iconbtm3">
+                	<img src="http://www.taobao.com/favicon.ico" />
+                </div>
+            </li>
+            <li>y
+            	<div class="icon">  
+                   <a href="#"><img src="delete-icon.png"/></a>
+                   <a href="#"><img src="edit-icon.png"  class="edit"/></a>
+                </div>
+                <div class="iconbtm iconbtm4">
+                	<img src="http://www.youku.com/favicon.ico" />
+                </div>
+            </li>
+            <li>u
+            	<div class="icon">  
+                   <a href="#"><img src="delete-icon.png"/></a>
+                   <a href="#"><img src="edit-icon.png"  class="edit"/></a>
+                </div>
+            </li>
+            <li>i
+            	<div class="icon">  
+                   <a href="#"><img src="delete-icon.png"/></a>
+                   <a href="#"><img src="edit-icon.png"  class="edit"/></a>
+                </div>
+            </li>
+            <li>o
+            	<div class="icon">  
+                   <a href="#"><img src="delete-icon.png"/></a>
+                   <a href="#"><img src="edit-icon.png"  class="edit"/></a>
+                </div>
+            </li>
+            <li>p
+            	<div class="icon">  
+                   <a href="#"><img src="delete-icon.png"/></a>
+                   <a href="#"><img src="edit-icon.png"  class="edit"/></a>
+                </div>
+            </li>
+        </ul>
+        <ul>
+            <li>a
+            	<div class="icon">  
+                   <a href="#"><img src="delete-icon.png"/></a>
+                   <a href="#"><img src="edit-icon.png"  class="edit"/></a>
+                </div>
+                <div class="iconbtm iconbtm5">
+                	<img src="http://www.adminbuy.cn/favicon.ico" />
+                </div>
+            </li>
+            <li>s
+            	<div class="icon">  
+                   <a href="#"><img src="delete-icon.png"/></a>
+                   <a href="#"><img src="edit-icon.png"  class="edit"/></a>
+                </div>
+            </li>
+            <li>d
+            	<div class="icon">  
+                   <a href="#"><img src="delete-icon.png"/></a>
+                   <a href="#"><img src="edit-icon.png"  class="edit"/></a>
+                </div>
+            </li>
+            <li>f
+            	<div class="icon">  
+                   <a href="#"><img src="delete-icon.png"/></a>
+                   <a href="#"><img src="edit-icon.png"  class="edit"/></a>
+                </div>
+            </li>
+            <li>g
+            	<div class="icon">  
+                   <a href="#"><img src="delete-icon.png"/></a>
+                   <a href="#"><img src="edit-icon.png"  class="edit"/></a>
+                </div>
+            </li>
+            <li>h
+            	<div class="icon">  
+                   <a href="#"><img src="delete-icon.png"/></a>
+                   <a href="#"><img src="edit-icon.png"  class="edit"/></a>
+                </div>
+            </li>
+            <li>j
+            	<div class="icon">  
+                   <a href="#"><img src="delete-icon.png"/></a>
+                   <a href="#"><img src="edit-icon.png"  class="edit"/></a>
+                </div>
+            </li>
+            <li>k
+            	<div class="icon">  
+                   <a href="#"><img src="delete-icon.png"/></a>
+                   <a href="#"><img src="edit-icon.png"  class="edit"/></a>
+                </div>
+            </li>
+            <li>l
+            	<div class="icon">  
+                   <a href="#"><img src="delete-icon.png"/></a>
+                   <a href="#"><img src="edit-icon.png"  class="edit"/></a>
+                </div>
+            </li>
+        </ul>
+        <ul>
+            <li>z
+            	<div class="icon">  
+                   <a href="#"><img src="delete-icon.png"/></a>
+                   <a href="#"><img src="edit-icon.png"  class="edit"/></a>
+                </div>
+            </li>
+            <li>x
+            	<div class="icon">  
+                   <a href="#"><img src="delete-icon.png"/></a>
+                   <a href="#"><img src="edit-icon.png"  class="edit"/></a>
+                </div>
+            </li>
+            <li>c
+            	<div class="icon">  
+                   <a href="#"><img src="delete-icon.png"/></a>
+                   <a href="#"><img src="edit-icon.png"  class="edit"/></a>
+                </div>
+            </li>
+            <li>v
+            	<div class="icon">  
+                   <a href="#"><img src="delete-icon.png"/></a>
+                   <a href="#"><img src="edit-icon.png"  class="edit"/></a>
+                </div>
+            </li>
+            <li>b
+            	<div class="icon">  
+                   <a href="#"><img src="delete-icon.png"/></a>
+                   <a href="#"><img src="edit-icon.png"  class="edit"/></a>
+                </div>
+                <div class="iconbtm iconbtm6">
+                	<img src="http://www.baidu.com/favicon.ico" />
+                </div>
+            </li>
+            <li>n
+            	<div class="icon">  
+                   <a href="#"><img src="delete-icon.png"/></a>
+                   <a href="#"><img src="edit-icon.png"  class="edit"/></a>
+                </div>
+            </li>
+            <li>m
+            	<div class="icon">  
+                   <a href="#"><img src="delete-icon.png"/></a>
+                   <a href="#"><img src="edit-icon.png"  class="edit"/></a>
+                </div>
+            </li>
+        </ul>
+    </div>
+	</div>
+	<script type="text/javascript">
+		let sealeft=document.querySelector(".sealeft"),
+			searig=document.querySelector(".searig");
+			searig.addEventListener("click",function(){
+				window.open("https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=baidu&wd="+sealeft.value+"&rsv_pq=9a45f5d100354380&rsv_t=afdc%2FCPmz02i1l6SD5s9TIqoxWaastcBs1hVTpew75IekU%2FC6pIQCvzVE3E&rqlang=cn&rsv_enter=1&rsv_sug3=6&rsv_sug1=4&rsv_sug7=101&rsv_sug2=0&inputT=1724&rsv_sug4=3174&rsv_sug=1","_blank")
+			})
+			function getKey(ev){
+                ev=ev||window.event;
+                var keycode=ev.which?ev.which:ev.keyCode;
+				if(ev.keycode==13||ev.keycode==108){	
+					window.open("https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=baidu&wd="+sealeft.value+"&rsv_pq=9a45f5d100354380&rsv_t=afdc%2FCPmz02i1l6SD5s9TIqoxWaastcBs1hVTpew75IekU%2FC6pIQCvzVE3E&rqlang=cn&rsv_enter=1&rsv_sug3=6&rsv_sug1=4&rsv_sug7=101&rsv_sug2=0&inputT=1724&rsv_sug4=3174&rsv_sug=1","_blank");	
+                    console.log("1")
+                }	
+			}
+            function listenKey(params) {
+                if (sealeft.addEventListener) {
+                    sealeft.addEventListener("keyup",getKey,false);
+                }else if(document.attachEvent){
+                    sealeft.attachEvent("onkeyup","getKey")
+                }else{
+                    sealeft.onkeyup=getKey;
+                }
+            }
+	</script>
+</body>
+</html>

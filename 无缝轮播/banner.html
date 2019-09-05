@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .wrap {
+            overflow: hidden;
+            position: relative;
+            width: 1010px;
+            height: 530px;
+            margin: 50px auto;
+            background: palegreen;
+        }
+
+        .wrap>ul {
+            width: 10100px;
+            height: 530px;
+            list-style: none;
+        }
+
+        .wrap>ul>li {
+            width: 1010px;
+            left: 0px;
+            top: 0px;
+        }
+
+        button {
+            position: absolute;
+            top: 50%;
+            margin-top: -25px;
+            border-style: none;
+            z-index: 3;
+            width: 50px;
+            height: 50px;
+            background: #333;
+        }
+
+        button:last-of-type {
+            right: 0px;
+
+        }
+
+        .nav {
+            position: absolute;
+            bottom: 0px;
+            z-index: 3;
+            width: 1010px;
+            height: 80px;
+        }
+
+        .nav>a {
+            float: left;
+            display: block;
+            width: 105px;
+            height: 80px;
+            background: #333;
+            line-height: 80px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 20px;
+            color: aliceblue;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <ul>
+            <li><img src="./img/1010.jpg" alt=""></li>
+            <li><img src="./img/11.jpg" alt=""></li>
+            <li><img src="./img/22.jpg" alt=""></li>
+            <li><img src="./img/33.jpg" alt=""></li>
+            <li><img src="./img/44.jpg" alt=""></li>
+            <li><img src="./img/55.jpg" alt=""></li>
+            <li><img src="./img/66.jpg" alt=""></li>
+            <li><img src="./img/77.jpg" alt=""></li>
+            <li><img src="./img/8.jpg" alt="" width="1010" height="530"></li>
+
+        </ul>
+        <button>
+            <</button> <button>>
+        </button>
+        <div class="nav">
+            <a href="javascript:;">美少女</a>
+            <a href="javascript:;">露娜</a>
+            <a href="javascript:;">孙尚香</a>
+            <a href="javascript:;">柯南 小兰</a>
+            <a href="javascript:;">柯基</a>
+            <a href="javascript:;">狄仁杰</a>
+            <a href="javascript:;">上单</a>
+            <a href="javascript:;">貂蝉</a>
+            <a href="javascript:;">至臻皮肤</a>
+
+        </div>
+    </div>
+
+    <script>
+        /**
+            1，先获取元素
+            2，
+        
+        **/
+        let wrap = document.querySelector(".wrap");
+        let oUl = document.querySelector(".wrap>ul");
+        let oLi = document.querySelectorAll(".wrap>ul li");
+        let btn = document.querySelectorAll("button");
+        let nav = document.querySelector(".nav");
+        let navA = document.querySelectorAll(".nav>a");
+        let i = 0;
+        oLi.forEach(function (item, index, array) {
+            item.style.position = "absolute";
+            item.style.left = index * item.offsetWidth + "px";
+        })
+        function navChange() {
+            navA.forEach(function (item, index, array) {
+                item.dataset.index = index;
+                item.style.width = "105px";
+                item.style.opacity = "0.5";
+                navA[i].style.width = "170px";
+                navA[i].style.opacity = "1";
+            })
+        }
+        navChange()
+        function next() {
+            ++i;
+            if (i == oLi.length) {
+                i = 0
+            }
+            oLi.forEach(function (item, index, array) {
+                item.dataset.i = index - i;
+                item.style.left = (index - i) * item.offsetWidth + "px";
+                item.style.transition = "1s";
+            })
+            navChange()
+            if (oLi[oLi.length - 1].dataset.i === "0") {
+                i = -1
+
+            }
+        }
+        function last() {
+
+            --i;
+            if (i == -2) {
+                i = (oLi.length - 2)
+            }
+            if (i == -1) {
+                i = (oLi.length - 1)
+            }
+            oLi.forEach(function (item, index, array) {
+                item.dataset.i = index - i;
+                item.style.left = (index - i) * item.offsetWidth + "px";
+                item.style.transition = "1s";
+            })
+            navChange()
+            if (oLi[oLi.length - 1].dataset.i === "0" + (oLi.length - 1)) {
+                i = (oLi.length - 1)
+            }
+           
+        }
+
+        function clickNav(ev = window.event) {
+            if (ev.target.dataset.index) {
+                let num = parseInt(ev.target.dataset.index) - i
+                if (num > 0) {
+                    for (let i = 0; i < num; i++) {
+                        next()
+                    }
+                } else {
+                    for (let i = 0; i < Math.abs(num); i++) {
+                        last()
+                    }
+                }
+            }
+        }
+        nav.addEventListener("click", clickNav)
+        btn[0].addEventListener("click", last)
+        btn[1].addEventListener("click", next)
+    </script>
+</body>
+
+</html>

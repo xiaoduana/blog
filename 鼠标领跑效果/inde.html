@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            overflow: hidden;
+            margin: 0px;
+            padding: 0px;
+            background: #000;
+            /* max-width: 1000px; */
+        }
+
+        .text {
+            overflow: hidden;
+            width: 100%;
+            height: auto;
+            text-align: center;
+            margin: 300px auto;
+            
+        }
+        
+        .text span:first-of-type {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="text">站在这个繁华的街上,找不到该去的方向,你站在这个街上,感觉到从来都没有的慌张</div>
+    <script>
+        let text = document.querySelector(".text");
+        let arys = [], ary = [], x = [], y = [], startX, startY, toggle;
+        arys = text.innerHTML.split("");
+        toggle = false;
+        text.innerHTML = ""
+        arys.forEach(element => {
+            text.innerHTML += `<span>${element}</span>`
+        });
+        let tSpan = document.querySelectorAll(".text span");
+        for (let i = 0; i < tSpan.length; i++) {//给所有li加定位
+            ary.push([tSpan[i].offsetLeft, tSpan[i].offsetTop]);
+        }
+        tSpan.forEach((element, i) => {
+            tSpan[i].style.position = "absolute";
+            tSpan[i].style.left = ary[i][0] + "px";
+            tSpan[i].style.top = ary[i][1] + "px";
+            tSpan[i].style.margin = "0px"
+            tSpan[i].dataset.x = parseInt(tSpan[i].style.left);
+            tSpan[i].dataset.y = parseInt(tSpan[i].style.top);
+        });
+        setInterval(function () {//头部变色
+            for (let i = 0; i < tSpan.length; i++) {
+                let r = parseInt(Math.random() * 266);
+                let g = parseInt(Math.random() * 266);
+                let b = parseInt(Math.random() * 266);
+                let a = parseInt(Math.random() * 5)
+                tSpan[i].style.color = "rgb(" + r + "," + g + "," + b + ")";
+                // tSpan[i].style.backgroundColor = "rgb(" + r + "," + g + "," + b + "," + a / 10 + ")";
+            }
+        }, 200)
+        tSpan[0].addEventListener("mousedown", move);
+        document.addEventListener("mousemove", move);
+        document.addEventListener("mouseup", move)
+        function move(ev) {
+            switch (ev.type) {
+                case "mousedown":
+                    toggle = true
+                    startX = ev.clientX;
+                    startY = ev.clientY;
+                    break;
+                case "mousemove":
+                    if (toggle) {
+                        let mX = ev.clientX;
+                        let mY = ev.clientY;
+                        for (let i = 0; i < tSpan.length; i++) {
+                            setTimeout(function () {
+                                tSpan[i].style.left = parseInt(tSpan[i].dataset.x) + (mX - startX) + "px";
+                                tSpan[i].style.top = parseInt(tSpan[i].dataset.y) + (mY - startY) + "px";
+                            }, i * 10)
+                        }
+                    }
+                    break;
+                case "mouseup":
+                    toggle = false
+                    for (let i = 0; i < tSpan.length; i++) {
+                        setTimeout(function () {
+                            tSpan[i].dataset.x = parseInt(tSpan[i].style.left);
+                            tSpan[i].dataset.y = parseInt(tSpan[i].style.top);
+                        }, tSpan.length * 10)
+                        if (tSpan[0] != tSpan[i]) {
+                            tSpan[i].style.top = tSpan[0].style.top
+                            tSpan[i].style.left=i*parseInt(tSpan.offsetWeight)+"px"
+                        }
+                    }
+                    break;
+            }
+        }
+        
+    </script>
+</body>
+
+</html>

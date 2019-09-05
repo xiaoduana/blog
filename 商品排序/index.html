@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrap {
+            position: relative;
+            width: 1010px;
+            height: 560px;
+            margin: 0 auto;
+        }
+
+        .wrap ul {
+            width: 1010px;
+            list-style: none;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .cont {
+            height: 520px;
+        }
+
+        .cont li {
+            float: left;
+            width: 190px;
+            height: 240px;
+            margin: 5px;
+            border: 1px #ccc solid;
+        }
+
+        .cont li:hover {
+            border: 2px red solid;
+        }
+
+        .cont li img {
+            display: block;
+            width: 190px;
+            height: 190px;
+        }
+
+        .cont li p {
+            text-indent: 2px;
+            font-size: 18px;
+            color: red;
+        }
+
+        .btn {
+            height: 40px;
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+        }
+
+        .btn li {
+            float: left;
+            width: 190px;
+            height: 30px;
+            margin: 5px;
+            line-height: 30px;
+            text-align: center;
+            cursor: pointer;
+            background: whitesmoke;
+            border-radius: 5px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <ul class="cont">
+            <li><img src="./img/1.jpg" alt="">
+                <p>￥<span>6999</span></p>
+            </li>
+            <li><img src="./img/2.jpg" alt="">
+                <p>￥<span>6499</span></p>
+            </li>
+            <li><img src="./img/3.jpg" alt="">
+                <p>￥<span>5210</span></p>
+            </li>
+            <li><img src="./img/4.jpg" alt="">
+                <p>￥<span>9999</span></p>
+            </li>
+            <li><img src="./img/5.jpg" alt="">
+                <p>￥<span>6666</span></p>
+            </li>
+            <li><img src="./img/6.gif" alt="">
+                <p>￥<span>8888</span></p>
+            </li>
+            <li><img src="./img/7.jpg" alt="">
+                <p>￥<span>13140</span></p>
+            </li>
+            <li><img src="./img/8.jpg" alt="">
+                <p>￥<span>51545</span></p>
+            </li>
+            <li><img src="./img/9.jpg" alt="">
+                <p>￥<span>6874</span></p>
+            </li>
+            <li><img src="./img/10.jpg" alt="">
+                <p>￥<span>23333</span></p>
+            </li>
+        </ul>
+        <ul class="btn">
+            <li>随机排序</li>
+            <li>升序</li>
+            <li>降序</li>
+        </ul>
+    </div>
+    <script>
+        let oCont = document.querySelectorAll(".cont li");
+        let oNum = document.querySelectorAll(".cont li span");
+        let oBtn = document.querySelectorAll(".btn li");
+        let array = [], ary = [];//存储价格顺序，存位置顺序
+        oNum.forEach((element, index) => {
+            array[index] = parseInt(element.innerHTML);
+
+        });
+        for (let i = 0; i < oCont.length; i++) {//给所有li加定位
+            ary.push([oCont[i].offsetLeft, oCont[i].offsetTop]);
+            setTimeout(function () {
+                oCont[i].style.position = "absolute";
+                oCont[i].style.left = ary[i][0] + "px";
+                oCont[i].style.top = ary[i][1] + "px";
+                oCont[i].style.margin = "0px"
+            }, 0)
+        }
+
+        function paixu(arr) {
+            let i = arr.length - 1
+            while (i > 0) {
+                var pos = 0;
+                for (let j = 0; j < i; j++) {
+                    if (arr[j] > arr[j + 1]) {
+                        pos = j;
+                        var temp = arr[j];
+                        arr[j] = arr[j + 1]
+                        arr[j + 1] = temp
+                    }
+                }
+                i = pos
+            }
+            return arr
+        }
+        function jiangxu(arr) {
+            let i = arr.length - 1
+            while (i > 0) {
+                var pos = 0;
+                for (let j = 0; j < i; j++) {
+                    if (arr[j] < arr[j + 1]) {
+                        pos = j;
+                        var temp = arr[j];
+                        arr[j] = arr[j + 1]
+                        arr[j + 1] = temp
+                    }
+                }
+                i = pos
+            }
+            return arr
+        }
+        function random(min, max) {
+            var range = max - min;
+            var rand = Math.random();
+            var num = min + Math.floor(rand * range);
+            return num;
+        }
+        oBtn[0].addEventListener("click", function () {
+            for (let i = 0; i < array.length; i++) {
+                var number = random(0, 10);
+                var number1 = random(0, 10)
+                var emty = array[number]
+                var emty1 = array[number1]
+                array[number1] = emty;
+                array[number] = emty1;
+            }
+            for (let i = 0; i < oCont.length; i++) {
+                for (let j = 0; j < oCont.length; j++) {
+                    if (parseInt(oNum[i].innerHTML) == array[j]) {
+                        oCont[i].style.left = ary[j][0] + "px";//给每一个li加定位元素
+                        oCont[i].style.top = ary[j][1] + "px";
+                        oCont[i].style.transition = "1s";
+                    }
+                }
+            }
+        })
+        oBtn[1].addEventListener("click", function () {
+            paixu(array)
+            for (let i = 0; i < oCont.length; i++) {
+                for (let j = 0; j < oCont.length; j++) {
+                    if (parseInt(oNum[i].innerHTML) == array[j]) {
+                        oCont[i].style.left = ary[j][0] + "px";//给每一个li加定位元素
+                        oCont[i].style.top = ary[j][1] + "px";
+                        oCont[i].style.transition = "1s";
+                    }
+                }
+            }
+        })
+        oBtn[2].addEventListener("click", function () {
+            jiangxu(array)
+            for (let i = 0; i < oCont.length; i++) {
+                for (let j = 0; j < oCont.length; j++) {
+                    if (parseInt(oNum[i].innerHTML) == array[j]) {
+                        oCont[i].style.left = ary[j][0] + "px";//给每一个li加定位元素
+                        oCont[i].style.top = ary[j][1] + "px";
+                        oCont[i].style.transition = "1s";
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

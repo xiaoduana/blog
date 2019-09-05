@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .wrap {
+            overflow: hidden;
+            position: relative;
+            width: 1200px;
+            height: 336px;
+            margin: 100px auto;
+
+        }
+
+        .banner li {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+
+            transition: 0.2s;
+        }
+
+        .btn {
+            position: absolute;
+            top: 50%;
+            left: 0px;
+            margin-top: -25px;
+            background: #333;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            cursor: pointer;
+        }
+
+        .dot {
+            position: absolute;
+            top: 300px;
+            left: 50%;
+            z-index: 4;
+            margin-left: -70px;
+            width: 140px;
+            height: 10px;
+
+        }
+
+        .wrap:hover .btn {
+            opacity: 0.5;
+        }
+
+        .dot>li {
+            display: inline-block;
+            margin-left: 8px;
+            background: skyblue;
+            width: 10px;
+            height: 10px;
+            border-radius: 100%;
+            cursor: pointer;
+        }
+
+        .btn.btn2 {
+            z-index: 3;
+            left: 1150px;
+        }
+
+        .item1 {
+            transform: translate(-72px, 33px) scale(0.8);
+        }
+
+        .item2 {
+            z-index: 2;
+            box-shadow: 0 5px 5px #ccc;
+            transform: translateX(235px) scale(1);
+        }
+
+        .item3 {
+            z-index: 1;
+            transform: translate(544px, 33px) scale(0.8);
+        }
+
+        .item4 {
+            transform: translate(779px, 33px) scale(0.8);
+        }
+
+        .item5 {
+            transform: translate(1014px, 33px) scale(0.8);
+        }
+
+        .item6 {
+            transform: translate(1249px, 33px) scale(0.8);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <ul class="banner">
+            <li class="item1"><img src="./images/01.jpg" alt=""></li>
+            <li class="item2"><img src="./images/02.jpg" alt=""></li>
+            <li class="item3"><img src="./images/03.jpg" alt=""></li>
+            <li class="item4"><img src="./images/04.jpg" alt=""></li>
+            <li class="item5"><img src="./images/05.jpg" alt=""></li>
+            <li class="item5"><img src="./images/06.jpg" alt=""></li>
+        </ul>
+        <div class="btn btn1">
+            <</div> <div class="btn btn2">>
+        </div>
+        <ul class="dot">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script>
+        let wrap = document.querySelector(".wrap"),
+            banner = document.querySelector(".banner"),
+            aLi = document.querySelectorAll(".banner li"),
+            btnLeft = document.querySelector(".btn1"),
+            btnRight = document.querySelector(".btn2"),
+            dotLi = document.querySelectorAll(".dot li"),
+            dot = document.querySelector(".dot"),
+            ary = [],
+            index = 0;
+
+        let timer = setInterval(next, 2000);
+        btnRight.addEventListener("click", next);
+        btnLeft.addEventListener("click", last);
+        wrap.addEventListener("mouseover", function () {
+            clearInterval(timer);
+        });
+        wrap.addEventListener("mouseout", function () {
+            timer = setInterval(next, 2000);
+        });
+
+
+
+        function color(num) {//下面小点点点击颜色变化方法
+            for (let i = 0; i < dotLi.length; i++) {
+                dotLi[i].style.background = "skyblue";
+                dotLi[i].style.boxShadow = "0 0px 0px red";
+            }
+            dotLi[num].style.background = "pink";
+            dotLi[num].style.boxShadow = "0 0px 8px red";
+        }
+        color(index)
+        aLi.forEach(function (item, index, array) {
+            ary.push(item.getAttribute("class"))
+        })
+        
+        function next() {//向下切换事件
+            ary.unshift(ary.pop());
+            aLi.forEach(function (item, index, array) {
+                item.setAttribute("class", ary[index])
+            })
+            color(index > 4 ? index = 0 : ++index);
+        }
+
+        function last() {//向上切换事件
+            ary.push(ary.shift());
+            aLi.forEach(function (item, index, array) {
+                item.setAttribute("class", ary[index])
+            })
+            color(index < 1 ? index = 5 : --index);
+        }
+        dotLi.forEach(function (item, index, array) {
+            item.dataset.index = index
+        })
+
+        dot.addEventListener("click", function (ev) {//小圆点点击事件委托
+            if (ev.target.dataset.index) {
+                let num = ev.target.dataset.index - index;
+                if (num > 0) {
+                    for (let i = 0; i < num; i++) {
+                        next()
+                    }
+                } else {
+                    for (let i = 0; i < Math.abs(num); i++) {
+                        last()
+                    }
+                }
+            }
+        })
+        banner.addEventListener("click",function (ev) {
+            console.log(ev.target.parentNode.classList[0])
+            switch(ev.target.parentNode.classList[0]){
+                case "item1":
+                    last()
+                    break;
+                case "item3":
+                    next()
+                    break;
+            }
+        })
+
+
+    </script>
+</body>
+
+</html>

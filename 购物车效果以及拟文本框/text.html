@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    .wrap{
+        width: 550px;
+        height: 700px;
+        margin: 10px auto;
+
+    }
+    #text{
+        float: left;
+        width: 550px;
+        height: 200px;
+    }
+    input{
+        float: right;
+    }
+    .con{
+        float: left;
+        width: 550px;
+        height: 500px;
+       
+    }
+    p{
+        height: 50px;
+        line-height: 50px;
+        font-size: 14px;
+        color: red;
+        font-weight: bold;
+        border-bottom: 1px #ccc solid;
+        
+    }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <textarea name="submit" id="text" cols="30" rows="10" value="words" placeholder="请输入内容"></textarea>
+        <br>
+        <input type="submit" name="words">
+        <div class="con">
+            
+        </div>
+    </div>
+    <script>
+        var wrap =document.querySelector(".wrap"),
+            con =document.querySelector(".con"),
+            textArea = document.querySelector("textarea"),
+            input = document.querySelector("input"),
+            p = document.querySelectorAll("p")
+            i = 0;
+        input.onclick = function () {
+            if(textArea.value){
+                var a = textArea.value;
+                con.innerHTML += "<p>"+a+"</p>";
+                
+                console.log(a);
+                console.log(con.innerHTML);
+                textArea.value = "";
+            }else{
+                alert("请输入内容")
+            }
+        }
+    </script>
+</body>
+</html>
